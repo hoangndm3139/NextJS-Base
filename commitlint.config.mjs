@@ -1,9 +1,9 @@
 export default {
   extends: ["@commitlint/config-conventional"],
-    parserPreset: {
+  parserPreset: {
     parserOpts: {
       headerPattern: /^\[([A-Z]+-\d+)\]\s(\w+):\s(.+)$/,
-      headerCorrespondence: ['ticket', 'type', 'subject'],
+      headerCorrespondence: ["ticket", "type", "subject"],
     },
   },
   rules: {
