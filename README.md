@@ -15,7 +15,7 @@
 
 Trong đó:
 - **TicketID**: Ticket ID trên Jira
-- 
+
 - **type**: Loại thay đổi (bắt buộc, chữ thường)
 
 - **subject**: Nội dung ngắn gọn về thay đổi (bắt buộc, không viết hoa toàn bộ, không chấm câu cuối)
