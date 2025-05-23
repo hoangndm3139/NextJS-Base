@@ -1,11 +1,5 @@
 export default {
   extends: ["@commitlint/config-conventional"],
-  parserPreset: {
-    parserOpts: {
-      headerPattern: /^\[([A-Z]+-\d+)\]\s(\w+):\s(.+)$/,
-      headerCorrespondence: ["ticket", "type", "subject"],
-    },
-  },
   rules: {
     "body-leading-blank": [1, "always"],
     "body-max-line-length": [2, "always", 100],

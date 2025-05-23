@@ -5,7 +5,7 @@
 #### Cấu trúc commit message
 
 ```bash
-[TicketID] <type>: <subject>
+<type>: <subject>
 
 <body>
 
@@ -14,8 +14,6 @@
 ```
 
 Trong đó:
-
-- **TicketID**: Ticket ID trên Jira
 
 - **type**: Loại thay đổi (bắt buộc, chữ thường)
 

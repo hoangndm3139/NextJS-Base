@@ -1,0 +1,11 @@
+{
+  "navigation": {
+    "home": "홈",
+    "about": "소개",
+    "contact": "연락처"
+  },
+  "common": {
+    "welcome": "우리 애플리케이션에 오신 것을 환영합니다",
+    "language": "언어"
+  }
+}
