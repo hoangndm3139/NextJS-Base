@@ -21,10 +21,6 @@ export async function middleware(request: NextRequest) {
   // Get locale from pathname
   const locale = pathname.split("/")[1];
 
-  if (pathname === `/${locale}`) {
-    return NextResponse.next();
-  }
-
   // Remove locale from pathname to check auth
   const pathnameWithoutLocale = pathname.replace(`/${locale}`, "");
   const isPublicPath = publicPaths.some(path => pathnameWithoutLocale.startsWith(path));
@@ -87,7 +83,7 @@ export async function middleware(request: NextRequest) {
   response.headers.set("x-user-role", payload?.role ?? "");
   response.headers.set("x-user-email", payload?.email ?? "");
 
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
