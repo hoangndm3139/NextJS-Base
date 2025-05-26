@@ -1,6 +1,6 @@
 const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 
-export const fetchWrapper: (
+export const fetchWrapper: <T>(
   url: string,
   options: RequestInit & {
     // A flag to indicate this is a retry request
@@ -8,7 +8,7 @@ export const fetchWrapper: (
     // A flag to indicate this is request that return a blob
     isResponseBlob?: boolean;
   },
-) => Promise<[any, string | undefined | boolean, string[]]> = async (url, options = {}) => {
+) => Promise<T> = async (url, options = {}) => {
   const headers = {
     "Content-Type": "application/json",
     ...options.headers,
