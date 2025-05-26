@@ -1,3 +1,5 @@
+import { Locale } from "@/config/i18n-config";
+
 const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 
 export const fetchWrapper: <T>(
@@ -7,6 +9,8 @@ export const fetchWrapper: <T>(
     _retryRequest?: boolean;
     // A flag to indicate this is request that return a blob
     isResponseBlob?: boolean;
+    // A flag to indicate the language of the request
+    language?: Locale;
   },
 ) => Promise<T> = async (url, options = {}) => {
   const headers = {
