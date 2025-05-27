@@ -19,5 +19,5 @@ export type GetUserInfoResponse = {
 };
 
 export type QueryParams = {
-  userId?: string; // Optional, if not provided, fetches the current user's info
+  userId?: string;
 };
