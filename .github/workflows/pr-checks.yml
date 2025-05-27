@@ -5,109 +5,32 @@ on:
     types: [opened, edited, reopened, ready_for_review, synchronize]
   push:
     branches: [main, develop]
+  workflow_dispatch:
 
 jobs:
   setup:
     name: Setup & install dependencies
     runs-on: ubuntu-latest
     outputs:
-      node-modules-path: ${{ steps.set-node-modules-path.outputs.path }}
+      cache-key: ${{ steps.cache-node-modules.outputs.cache-hit }}
     steps:
       - uses: actions/checkout@v3
 
-      - name: Cache node modules
+      - name: Cache node modules and npm cache
+        id: cache-node-modules
         uses: actions/cache@v3
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
+            node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: Install dependencies
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: npm install
 
-      - name: Set output for node_modules path
-        id: set-node-modules-path
-        run: echo "path=node_modules" >> "$GITHUB_OUTPUT"
-  check-reviewers:
-    name: "Check reviewers"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ensure 2 reviewers are assigned
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const reviewers = await github.rest.pulls.listRequestedReviewers({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            });
-            const assigned = reviewers.data.users.length;
-            if (assigned < 2) {
-              core.setFailed(`❌ Cần ít nhất 2 reviewer (hiện có ${assigned})`);
-            } else {
-              core.info(`✅ Có đủ ${assigned} reviewer(s)`);
-            }
-
-  lint:
-    name: "Lint code"
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm run lint
-
-  pretty:
-    name: "Check formatting"
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm run pretty:check
-
-  typecheck:
-    name: "Typecheck code"
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm run typecheck
-
-  test:
-    name: "Run unit tests"
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm install
-      - run: npm run test
-
-  discord:
-    name: "Send Discord notification"
-    runs-on: ubuntu-latest
-    if: github.event.action == 'opened'
-    steps:
-      - name: Send Discord message
-        run: |
-          REVIEWERS=$(echo '${{ toJson(github.event.pull_request.  requested_reviewers) }}' | jq -r '.[]?.login' | paste -sd " " -)
-          if [ -z "$REVIEWERS" ]; then
-             REVIEWERS="No reviewer"
-          fi
-
-          curl -H "Content-Type: application/json" \
-            -X POST \
-            -d "{
-           \"content\": \"✅ New PR from branch \`${{ github.head_ref }}\` to \`${{ github.base_ref }}\`\n🔗 https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}\n👤 Commit by: ${{ github.event.pull_request.user.login }}\n📦 Message: ${{ github.event.pull_request.title }}\n🕒 At: ${{ github.event.pull_request.created_at }}\n👀 Reviewer: ${REVIEWERS}\"
-            }" \
-           https://discordapp.com/api/webhooks/1376409380848926811/ZhcvLqLf5db07aCqhh3Vy6b9tQ-4nlqcdrRtzP3RkXOt1RvbQqbWK4Gcp7Q4vEROsuWw
-
-  setup-config:
-    name: "Setup config files"
-    runs-on: ubuntu-latest
-    steps:
       - name: Generate ESLint config for React + TypeScript
         run: |
           echo '{
@@ -139,3 +62,112 @@ jobs:
             "tabWidth": 2,
             "trailingComma": "es5"
           }' > .prettierrc
+
+      - name: Set node_modules path output
+        id: set-node-modules-path
+        run: echo "path=node_modules" >> "$GITHUB_OUTPUT"
+
+  check-reviewers:
+    name: Check reviewers
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v3
+      - name: Ensure at least 2 reviewers assigned
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            if (!pr) {
+              core.info('No pull request context');
+              return;
+            }
+            const reviewers = await github.rest.pulls.listRequestedReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number
+            });
+            const assignedCount = reviewers.data.users.length;
+            if (assignedCount < 2) {
+              core.setFailed(`❌ Cần ít nhất 2 reviewer (hiện có ${assignedCount})`);
+            } else {
+              core.info(`✅ Có đủ ${assignedCount} reviewer(s)`);
+            }
+
+  lint:
+    name: Lint code
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore node_modules cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm run lint
+
+  pretty:
+    name: Check formatting
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore node_modules cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm run pretty:check
+
+  typecheck:
+    name: Typecheck code
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore node_modules cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm run typecheck
+
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - uses: actions/checkout@v3
+      - name: Restore node_modules cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - run: npm run test
+
+  discord:
+    name: Send Discord notification
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
+    steps:
+      - name: Send Discord message
+        env:
+          REVIEWERS: ${{ join(github.event.pull_request.requested_reviewers.*.login, ' ') || 'No reviewer' }}
+        run: |
+          curl -H "Content-Type: application/json" -X POST -d "{
+            \"content\": \"✅ New PR from branch \`${{ github.head_ref }}\` to \`${{ github.base_ref }}\`\n
+           🔗 https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}\n
+          👤 Commit by: ${{ github.event.pull_request.user.login }}\n
+          📦 Message: ${{ github.event.pull_request.title }}\n
+          🕒 At: ${{ github.event.pull_request.created_at }}\n
+          👀 Reviewer: $REVIEWERS\"
+          }" https://discordapp.com/api/webhooks/1376409380848926811/ZhcvLqLf5db07aCqhh3Vy6b9tQ-4nlqcdrRtzP3RkXOt1RvbQqbWK4Gcp7Q4vEROsuWw
