@@ -2,15 +2,16 @@
   "name": "no",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "pretty": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
+    "pretty:check": "prettier --write \"./**/*.{js,jsx,ts,tsx,json}\"",
     "prepare": "husky install",
     "test": "jest",
+    "typecheck": "tsc",
     "test:watch": "jest --watch"
   },
   "dependencies": {
