@@ -3,7 +3,8 @@ type ButtonProps = {
   onClick?: () => void;
   disabled?: boolean;
 };
-
+// check precommit lints
+// pr check config
 const Button: React.FC<ButtonProps> = ({ children, onClick, disabled = false }) => {
   return (
     <button

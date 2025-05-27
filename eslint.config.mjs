@@ -2,7 +2,8 @@ import eslint from "@eslint/js";
 import * as tseslint from "typescript-eslint";
 import nextjs from "@next/eslint-plugin-next";
 import prettier from "eslint-plugin-prettier";
-
+import unusedImports from "eslint-plugin-unused-imports";
+import importPlugin from "eslint-plugin-import";
 export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
@@ -12,6 +13,8 @@ export default [
       "@typescript-eslint": tseslint.plugin,
       next: nextjs,
       prettier: prettier,
+      unusedImports: unusedImports,
+      import: importPlugin,
     },
     settings: {
       next: {
@@ -49,6 +52,30 @@ export default [
               },
             },
           ],
+        },
+      ],
+      "import/order": [
+        "error",
+        {
+          groups: ["builtin", "external", "parent", "sibling", "index", "object", "type"],
+          pathGroups: [
+            {
+              pattern: "next/**",
+              group: "builtin",
+              position: "before",
+            },
+            {
+              pattern: "@/**",
+              group: "parent",
+              position: "before",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["builtin"],
+          alphabetize: {
+            order: "asc",
+            caseInsensitive: true,
+          },
+          "newlines-between": "never",
         },
       ],
     },
