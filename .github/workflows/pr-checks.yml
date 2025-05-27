@@ -62,6 +62,7 @@ jobs:
   discord:
     name: "Send Discord notification"
     runs-on: ubuntu-latest
+    if: github.event.action == 'opened'
     steps:
       - name: Send Discord message
         run: |
