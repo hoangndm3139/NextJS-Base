@@ -7,6 +7,28 @@ on:
     branches: [main, develop]
 
 jobs:
+  setup:
+    name: Setup & install dependencies
+    runs-on: ubuntu-latest
+    outputs:
+      node-modules-path: ${{ steps.set-node-modules-path.outputs.path }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Set output for node_modules path
+        id: set-node-modules-path
+        run: echo "path=node_modules" >> "$GITHUB_OUTPUT"
   check-reviewers:
     name: "Check reviewers"
     runs-on: ubuntu-latest
@@ -29,6 +51,7 @@ jobs:
 
   lint:
     name: "Lint code"
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -37,6 +60,7 @@ jobs:
 
   pretty:
     name: "Check formatting"
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -45,6 +69,7 @@ jobs:
 
   typecheck:
     name: "Typecheck code"
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -53,6 +78,7 @@ jobs:
 
   test:
     name: "Run unit tests"
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
