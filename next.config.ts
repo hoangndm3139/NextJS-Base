@@ -30,7 +30,6 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  pageExtensions: ["page.tsx", "api.ts"],
   images: { unoptimized: true },
   trailingSlash: true, // For SEO consistency
   eslint: { ignoreDuringBuilds: true },
