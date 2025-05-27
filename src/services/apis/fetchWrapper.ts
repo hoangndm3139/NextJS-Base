@@ -1,6 +1,12 @@
 import { Locale } from "@/config/i18n-config";
+import { ParsedUrlQuery } from "querystring";
+import qs from "qs";
 
 const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL!;
+
+export const query = (query?: ParsedUrlQuery): string => {
+  return `${query && Object.keys(query).length ? `?${qs.stringify(query, { arrayFormat: "repeat" })}` : ""}`;
+};
 
 export const fetchWrapper: <T>(
   url: string,
