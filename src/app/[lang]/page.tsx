@@ -1,9 +1,9 @@
-import { getDictionary } from "@/utils/getDictionary";
+import { getDictionary, Module } from "@/utils/getDictionary";
 import { Locale } from "@/config/i18n-config";
 
 export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const dict = await getDictionary(lang, Module.auth);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
