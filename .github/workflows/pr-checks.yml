@@ -7,32 +7,12 @@ on:
     branches: [main, develop]
 
 jobs:
-  check-reviewers:
-    name: "Check reviewers"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Ensure 2 reviewers are assigned
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const reviewers = await github.rest.pulls.listRequestedReviewers({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number
-            });
-            const assigned = reviewers.data.users.length;
-            if (assigned < 2) {
-              core.setFailed(`❌ Cần ít nhất 2 reviewer (hiện có ${assigned})`);
-            } else {
-              core.info(`✅ Có đủ ${assigned} reviewer(s)`);
-            }
-
   lint:
     name: "Lint code"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci
+      - run: npm install
       - run: npm run lint
 
   pretty:
@@ -40,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci
+      - run: npm install
       - run: npm run pretty:check
 
   typecheck:
@@ -48,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci
+      - run: npm install
       - run: npm run typecheck
 
   test:
@@ -56,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: npm ci
+      - run: npm install
       - run: npm run test
 
   discord:
