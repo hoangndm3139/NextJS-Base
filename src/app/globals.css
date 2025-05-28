@@ -74,9 +74,6 @@
   --gradient-5DE: linear-gradient(90deg, #fc5b5b 0%, #fc5390 100%);
   --gradient-6NO: linear-gradient(90deg, #fc5390 0%, #7569ff 100%);
   --gradient-default: linear-gradient(90deg, #db73ff 0%, #7b53ed 100%);
-
-  /* Font families */
-  --font-family-poppins: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer utilities {
@@ -101,11 +98,6 @@
   .bg-gradient-default {
     background: var(--gradient-default);
   }
-}
-
-/* Base styles */
-body {
-  font-family: var(--font-family-poppins);
 }
 
 @theme inline {
