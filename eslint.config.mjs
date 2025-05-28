@@ -4,6 +4,7 @@ import nextjs from "@next/eslint-plugin-next";
 import prettier from "eslint-plugin-prettier";
 import unusedImports from "eslint-plugin-unused-imports";
 import importPlugin from "eslint-plugin-import";
+import storybook from "eslint-plugin-storybook";
 export default [
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
@@ -15,6 +16,7 @@ export default [
       prettier: prettier,
       unusedImports: unusedImports,
       import: importPlugin,
+      storybook,
     },
     settings: {
       next: {

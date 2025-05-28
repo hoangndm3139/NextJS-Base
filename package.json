@@ -81,10 +81,5 @@
     "workerDirectory": [
       "public"
     ]
-  },
-  "eslintConfig": {
-    "extends": [
-      "plugin:storybook/recommended"
-    ]
   }
 }
