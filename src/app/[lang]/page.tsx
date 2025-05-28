@@ -1,6 +1,6 @@
-import { getDictionary, Module } from "@/utils/getDictionary";
 import { Locale } from "@/config/i18n-config";
 import { getUserInfoFetcher } from "@/services/apis/user/getUserInfo";
+import { getDictionary, Module } from "@/utils/getDictionary";
 
 export default async function Home({ params }: { params: Promise<{ lang: Locale }> }) {
   const { lang } = await params;
@@ -17,7 +17,7 @@ export default async function Home({ params }: { params: Promise<{ lang: Locale 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div>
-        <h1 className="text-4xl font-bold">{dict.common.welcome}</h1>
+        <h1 className="text-fprimary-yellow bg-gradient-1GO text-4xl font-bold">{dict.common.welcome}</h1>
       </div>
     </main>
   );
