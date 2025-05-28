@@ -44,6 +44,7 @@ next-env.d.ts
 .qodo
 
 # package manager
+package-lock.json
 yarn.lock
 pnpm-lock.yaml
 

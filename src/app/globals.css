@@ -5,6 +5,109 @@
   --foreground: #171717;
 }
 
+@theme {
+  /* Colors */
+  --color-fprimary-yellow: #ffbd1b;
+  --color-fprimary-black: #2a2720;
+
+  --color-fblack-opacity30: #0000004d;
+  --color-fblack-opacity40: #00000066;
+  --color-fblack-opacity50: #00000080;
+  --color-fblack-opacity60: #00000099;
+  --color-fblack-opacity70: #000000b3;
+  --color-fblack-opacity100: #000000;
+  --color-fblack-bg2: #202020;
+  --color-fblack-bg3: #303030;
+  --color-fblack-bg4: #363636;
+
+  --color-fgray-normal: #404040;
+  --color-fgray-gray2: #515151;
+  --color-fgray-gray25: #515151;
+  --color-fgray-gray3: #515151;
+
+  --color-fstatus-warning: #e8361e;
+  --color-fstatus-cancel: #ff361b4d;
+
+  --color-fgrade-grade1GO: #7569ff;
+  --color-fgrade-grade1TextGO: #af89ff;
+  --color-fgrade-grade2FA: #33afe4;
+  --color-fgrade-grade3EL: #13cccc;
+  --color-fgrade-grade4AM: #46cd8c;
+  --color-fgrade-grade5DE: #fc5b5b;
+  --color-fgrade-grade6NO: #fc5390;
+  --color-fgrade-grade: #9b9b9b;
+
+  --color-flevel-level: #202020;
+  --color-flevel-level0: #9b9b9b;
+  --color-flevel-level1: #f55197;
+  --color-flevel-level2: #e657a3;
+  --color-flevel-level3: #d75aaf;
+  --color-flevel-level4: #c85cbc;
+  --color-flevel-level5: #b75fca;
+  --color-flevel-level6: #a861d6;
+  --color-flevel-level7: #9a64e2;
+  --color-flevel-level8: #8a66ee;
+  --color-flevel-level9: #7769fe;
+
+  --color-fscout-level1: #cb53ab;
+  --color-fscout-level1hover: #cb53ab26;
+  --color-fscout-level2: #3f81c5;
+  --color-fscout-level2hover: #40a8d426;
+  --color-fscout-level2txt: #40a8d4;
+  --color-fscout-level3: #9a64e2;
+  --color-fscout-level3hover: #9a64e226;
+  --color-fscout-level3txt: #b08cff;
+
+  --color-frating-28: #9b9b9b;
+  --color-frating-41: #fc5390;
+  --color-frating-58: #fc5b5b;
+  --color-frating-64: #46cd8c;
+  --color-frating-71: #13cccc;
+  --color-frating-89: #33afe4;
+  --color-frating-100: #7569ff;
+
+  /* Gradients */
+  --gradient-1GO: linear-gradient(90deg, #db73ff 0%, #7b53ed 100%);
+  --gradient-2FA: linear-gradient(90deg, #33afe4 0%, #13cccc 100%);
+  --gradient-3EL: linear-gradient(90deg, #13cccc 0%, #46cd8c 100%);
+  --gradient-4AM: linear-gradient(90deg, #46cd8c 0%, #fc5b5b 100%);
+  --gradient-5DE: linear-gradient(90deg, #fc5b5b 0%, #fc5390 100%);
+  --gradient-6NO: linear-gradient(90deg, #fc5390 0%, #7569ff 100%);
+  --gradient-default: linear-gradient(90deg, #db73ff 0%, #7b53ed 100%);
+
+  /* Font families */
+  --font-family-poppins: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer utilities {
+  .bg-gradient-1GO {
+    background: var(--gradient-1GO);
+  }
+  .bg-gradient-2FA {
+    background: var(--gradient-2FA);
+  }
+  .bg-gradient-3EL {
+    background: var(--gradient-3EL);
+  }
+  .bg-gradient-4AM {
+    background: var(--gradient-4AM);
+  }
+  .bg-gradient-5DE {
+    background: var(--gradient-5DE);
+  }
+  .bg-gradient-6NO {
+    background: var(--gradient-6NO);
+  }
+  .bg-gradient-default {
+    background: var(--gradient-default);
+  }
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-family-poppins);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
