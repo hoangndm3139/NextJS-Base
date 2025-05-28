@@ -30,7 +30,7 @@ export default async function RootLayout({
   const { locale } = await params;
   return (
     <html lang={locale}>
-      <body className={`${poppins.variable} antialiased`}>
+      <body className={`${poppins.className} antialiased`}>
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
