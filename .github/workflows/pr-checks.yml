@@ -56,7 +56,7 @@ jobs:
             -d "{
            \"content\": \"✅ New PR from branch \`${{ github.head_ref }}\` to \`${{ github.base_ref }}\`\n🔗 https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}\n👤 Commit by: ${{ github.event.pull_request.user.login }}\n📦 Message: ${{ github.event.pull_request.title }}\n🕒 At: ${{ github.event.pull_request.created_at }}\n👀 Reviewer: ${REVIEWERS}\"
             }" \
-           https://discordapp.com/api/webhooks/1376409380848926811/ZhcvLqLf5db07aCqhh3Vy6b9tQ-4nlqcdrRtzP3RkXOt1RvbQqbWK4Gcp7Q4vEROsuWw
+           https://discordapp.com/api/webhooks/1377175599184871485/1ORCS4dJZ4hojiiMxQHyj3ozFQWIsm-3J8RRwIaU4DneR6dHbtC7YdBoTvA73DJbEWSa
 
   setup-config:
     name: "Setup config files"
