@@ -1,4 +1,3 @@
-import "server-only";
 import type { Locale } from "../config/i18n-config";
 
 export enum Module {
