@@ -8,6 +8,7 @@
 @theme {
   /* Colors */
   --color-fprimary-yellow: #ffbd1b;
+  --color-fprimary-yellow-1: #e5aa18;
   --color-fprimary-black: #2a2720;
 
   --color-fblack-opacity30: #0000004d;
@@ -19,6 +20,9 @@
   --color-fblack-bg2: #202020;
   --color-fblack-bg3: #303030;
   --color-fblack-bg4: #363636;
+
+  --color-bw-gray-3: #bdbdbd;
+  --color-bw-gray-25: #808080;
 
   --color-fgray-normal: #404040;
   --color-fgray-gray2: #515151;
