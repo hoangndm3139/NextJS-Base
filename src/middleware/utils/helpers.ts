@@ -1,20 +1,7 @@
 import { i18n } from "@/config/i18n-config";
-import { PUBLIC_PATHS } from "./constants";
-
-export function getLocaleFromPathname(pathname: string): string {
-  return pathname.split("/")[1];
-}
 
 export function checkPathnameHasLocale(pathname: string): boolean {
   return i18n.locales.some(locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
-}
-
-export function getPathnameWithoutLocale(pathname: string, locale: string): string {
-  return pathname.replace(`/${locale}`, "");
-}
-
-export function isPublicPath(pathname: string): boolean {
-  return PUBLIC_PATHS.some(path => pathname.startsWith(path));
 }
 
 export function generateNonce(): string {

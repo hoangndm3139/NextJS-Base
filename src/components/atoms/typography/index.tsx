@@ -1,4 +1,4 @@
-import { PropsWithChildren, createElement } from "react";
+import { createElement } from "react";
 
 export enum TypographyVariant {
   HEADLINE = "Headline",
@@ -19,11 +19,9 @@ export enum TypographyVariant {
   CARD_LV = "Card Lv",
 }
 
-interface TypographyProps extends PropsWithChildren {
-  className?: string;
+interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   variant: TypographyVariant;
 }
-
 const typographyElements = {
   [TypographyVariant.HEADLINE]: "h1",
   [TypographyVariant.HEADING]: "h2",
@@ -42,6 +40,7 @@ const typographyElements = {
   [TypographyVariant.CARD_LEVEL]: "p",
   [TypographyVariant.CARD_LV]: "p",
 };
+
 const typographyClass = {
   [TypographyVariant.HEADLINE]: "text-[32px] leading-[1.2] font-bold",
   [TypographyVariant.HEADING]: "text-2xl leading-[1.2] font-bold",
@@ -60,10 +59,10 @@ const typographyClass = {
   [TypographyVariant.CARD_LEVEL]: "text-[34px] leading-none font-semibold",
   [TypographyVariant.CARD_LV]: "text-xs leading-none font-bold",
 };
-export default function Typography({ variant, children, className }: TypographyProps) {
+export default function Typography({ variant, children, className = "", ...props }: TypographyProps) {
   return createElement(
     typographyElements[variant] || "p",
-    { className: `base-font ${typographyClass[variant]} ${className}` },
+    { className: `base-font ${typographyClass[variant]} ${className}`, ...props },
     children,
   );
 }

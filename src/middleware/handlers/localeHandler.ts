@@ -10,6 +10,4 @@ export async function handleLocale(request: NextRequest): Promise<NextResponse |
     request.nextUrl.pathname = `/${locale}${pathname}`;
     return NextResponse.redirect(request.nextUrl);
   }
-
-  return undefined;
 }
