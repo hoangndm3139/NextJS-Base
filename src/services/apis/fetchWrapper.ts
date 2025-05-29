@@ -1,6 +1,6 @@
-import { Locale } from "@/config/i18n-config";
 import { ParsedUrlQuery } from "querystring";
 import qs from "qs";
+import { Locale } from "@/config/i18n-config";
 
 const baseURL = process.env.NEXT_PUBLIC_BACKEND_URL!;
 
