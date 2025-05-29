@@ -1,3 +1,4 @@
+import "../src/app/globals.css";
 import { initialize, mswLoader } from "msw-storybook-addon";
 import type { Preview } from "@storybook/react";
 
