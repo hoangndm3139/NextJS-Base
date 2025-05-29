@@ -29,11 +29,6 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true,
-  images: { unoptimized: true },
-  trailingSlash: true, // For SEO consistency
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
   async headers() {
     // Only add security headers in production and test environments
     return process.env.NODE_ENV !== "development"
