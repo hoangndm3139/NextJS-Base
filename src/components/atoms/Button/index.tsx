@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   variant = "Primary",
   size = "Large",
-  className,
+  className = "",
   disabled = false,
   ...props
 }) => {
