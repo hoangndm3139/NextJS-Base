@@ -2,6 +2,7 @@ import ButtonResponsive from ".";
 import type { Meta, StoryObj } from "@storybook/react";
 const meta = {
   component: ButtonResponsive,
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
   },
