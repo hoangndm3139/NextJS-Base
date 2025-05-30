@@ -20,6 +20,7 @@
   --color-fblack-bg2: #202020;
   --color-fblack-bg3: #303030;
   --color-fblack-bg4: #363636;
+  --color-fblack-bg5: #121212;
 
   --color-bw-gray-3: #bdbdbd;
   --color-bw-gray-25: #808080;
@@ -70,6 +71,14 @@
   --color-frating-89: #33afe4;
   --color-frating-100: #7569ff;
 
+  --color-fcard-elite: #d3c18f;
+  --color-fcard-fantasy: #f80000;
+  --color-fcard-brown: #93756e;
+
+  --color-fcard-FW: #fc5b5b;
+  --color-fcard-MF: #2ab986;
+  --color-fcard-DF: #33afe4;
+
   /* Gradients */
   --gradient-1GO: linear-gradient(90deg, #db73ff 0%, #7b53ed 100%);
   --gradient-2FA: linear-gradient(90deg, #33afe4 0%, #13cccc 100%);
@@ -78,6 +87,18 @@
   --gradient-5DE: linear-gradient(90deg, #fc5b5b 0%, #fc5390 100%);
   --gradient-6NO: linear-gradient(90deg, #fc5390 0%, #7569ff 100%);
   --gradient-default: linear-gradient(90deg, #db73ff 0%, #7b53ed 100%);
+  --gradient-fcard-goat: linear-gradient(
+    90deg,
+    #a86dd2 0%,
+    #7483e9 15.19%,
+    #c0e4f3 26.08%,
+    #f0f0f4 39.77%,
+    #f0f0f4 40.12%,
+    #edecf3 71.72%,
+    #aac2ee 100%
+  );
+  --gradient-faded-to-black: linear-gradient(180deg, rgba(0, 0, 0, 0) 50.17%, #000 100%);
+  --gradient-fcard-skill: linear-gradient(91deg, #857568 0.6%, #be998f 57.82%, #81899c 82.03%);
 }
 
 @layer utilities {
@@ -101,6 +122,15 @@
   }
   .bg-gradient-default {
     background: var(--gradient-default);
+  }
+  .bg-gradient-fcard-goat {
+    background: var(--gradient-fcard-goat);
+  }
+  .bg-gradient-faded-to-black {
+    background: var(--gradient-faded-to-black);
+  }
+  .bg-gradient-fcard-skill {
+    background: var(--gradient-fcard-skill);
   }
 }
 
