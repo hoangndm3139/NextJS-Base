@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { ReactNode } from "react";
 import { ButtonHTMLAttributes } from "react";
 
@@ -36,7 +37,12 @@ const Button: React.FC<ButtonProps> = ({
     <button
       {...props}
       disabled={disabled}
-      className={`disabled:bg-fblack-bg3 disabled:text-fgray-gray2 flex flex-shrink-0 cursor-pointer items-center justify-center rounded-md font-semibold disabled:cursor-default ${ButtonVariants[variant]} ${SizeVariants[size]} ${className}`}
+      className={clsx(
+        "disabled:bg-fblack-bg3 disabled:text-fgray-gray2 flex flex-shrink-0 cursor-pointer items-center justify-center rounded-md font-semibold disabled:cursor-default",
+        ButtonVariants[variant],
+        SizeVariants[size],
+        className,
+      )}
     >
       {children}
     </button>
