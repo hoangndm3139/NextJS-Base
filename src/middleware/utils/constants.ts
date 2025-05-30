@@ -8,6 +8,6 @@ export const MATCHER_CONFIG = {
      * - _next/image (image optimization files)
      * - favicon.ico, public (metadata files)
      */
-    "/((?!_next/static|_next/image|favicon.ico|public).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|public).*)",
   ],
 };

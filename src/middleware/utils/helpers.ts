@@ -1,7 +1,7 @@
 import { i18n } from "@/config/i18n-config";
 
 export function checkPathnameHasLocale(pathname: string): boolean {
-  return i18n.locales.some(locale => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
+  return i18n.locales.some(locale => pathname.startsWith(`/${locale}`));
 }
 
 export function generateNonce(): string {
