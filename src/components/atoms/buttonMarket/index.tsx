@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { ButtonHTMLAttributes } from "react";
 import { useCountdown } from "@/hooks/useCountDown";
 import { cn } from "@/utils";
@@ -49,12 +50,12 @@ const ButtonMarket = ({
         className,
       )}
     >
-      <span className={`text-xs font-semibold ${disabled ? "text-fgray-gray2" : ""}`}>{text}</span>
+      <span className={clsx("text-xs font-semibold", disabled && "text-fgray-gray2")}>{text}</span>
       {!!targetDate && (
         <TimeSubText
           targetDate={targetDate}
           onExpire={onExpire}
-          className={`text-fgrade-grade text-xs ${disabled ? "text-fgray-gray2" : ""}`}
+          className={clsx("text-fgrade-grade text-xs", disabled && "text-fgray-gray2")}
         />
       )}
     </button>
