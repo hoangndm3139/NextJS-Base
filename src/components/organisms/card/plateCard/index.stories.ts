@@ -66,10 +66,10 @@ export const Default: Story = {
     ovr: 95,
     position: "LW",
     playerImageSrc: "/images/img_ingame/img_mock_player.png",
-    grade: {
-      value: 20,
-      type: "plate",
-    },
+    // grade: {
+    //   value: 20,
+    //   type: "plate",
+    // },
     type: "buy",
   },
 };
@@ -102,5 +102,22 @@ export const WithPrice: Story = {
   args: {
     ...Default.args,
     price: { amount: 50000, currency: "Gold" },
+  },
+};
+
+export const WithLevel: Story = {
+  args: {
+    ...Default.args,
+    isShowLevel: true,
+  },
+};
+
+export const WithGrade: Story = {
+  args: {
+    ...Default.args,
+    grade: {
+      value: 20,
+      type: "plate",
+    },
   },
 };

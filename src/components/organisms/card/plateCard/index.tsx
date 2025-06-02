@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import Button from "@/components/atoms/Button";
+import CircularProgress from "@/components/atoms/circularProgress";
 import { GradeType, PositionType } from "@/types/card";
 
 type PlateCardProps = {
@@ -16,15 +17,16 @@ type PlateCardProps = {
     amount: number;
     currency: string;
   };
-  grade: {
+  grade?: {
     value: number;
     type: GradeType;
   };
   type: "buy" | "upgrade";
+  isShowLevel?: boolean;
 };
 
 const commonCardClasses =
-  "w-[120px] h-[188px] rounded-lg flex flex-col justify-between items-center text-center bg-cover bg-center bg-no-repeat";
+  "w-[120px] h-[188px] rou nded-lg flex flex-col justify-between items-center text-center bg-cover bg-center bg-no-repeat";
 
 const gradeIcons: Record<GradeType, string> = {
   AM: "/icons/icon_card_grade/ic_grade_card_AM.svg",
@@ -49,6 +51,7 @@ const PlateCard: React.FC<PlateCardProps> = ({
   price,
   grade,
   type,
+  isShowLevel,
 }) => {
   const handleImageError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
     event.currentTarget.src = FALLBACK_PLAYER_IMAGE;
@@ -66,15 +69,26 @@ const PlateCard: React.FC<PlateCardProps> = ({
           height={80}
           onError={handleImageError}
         />
-        <div className="bg-fblack-bg5 absolute top-[9px] right-2 flex h-4 items-center justify-center gap-1 rounded-[10px] px-1 backdrop-blur-[2px]">
-          <Image
-            src={gradeIcons[grade.type]}
-            alt="grade_icon"
-            width={10}
-            height={10}
-          />
-          <p className="text-[10px] leading-3 font-semibold text-white">{grade.value}</p>
-        </div>
+        {grade && (
+          <div className="bg-fblack-bg5 absolute top-[9px] right-2 flex h-4 items-center justify-center gap-1 rounded-[10px] px-1 backdrop-blur-[2px]">
+            <Image
+              src={gradeIcons[grade.type]}
+              alt="grade_icon"
+              width={10}
+              height={10}
+            />
+            <p className="text-[10px] leading-3 font-semibold text-white">{grade.value}</p>
+          </div>
+        )}
+
+        {isShowLevel && (
+          <div className="absolute top-[9px] right-2 flex h-4 items-center justify-center">
+            <CircularProgress
+              value={1}
+              totalValue={3}
+            />
+          </div>
+        )}
       </div>
 
       {/* Player Stats */}

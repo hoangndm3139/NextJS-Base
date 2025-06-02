@@ -22,6 +22,8 @@
   --color-fblack-bg4: #363636;
   --color-fblack-bg5: #121212;
 
+  --color-fwhite-opacity80: #ffffffcc;
+
   --color-bw-gray-3: #bdbdbd;
   --color-bw-gray-25: #808080;
 
@@ -78,6 +80,9 @@
   --color-fcard-FW: #fc5b5b;
   --color-fcard-MF: #2ab986;
   --color-fcard-DF: #33afe4;
+
+  --color-fprogess-1: #ffac00;
+  --color-fprogess-2: #ff525e;
 
   /* Gradients */
   --gradient-1GO: linear-gradient(90deg, #db73ff 0%, #7b53ed 100%);

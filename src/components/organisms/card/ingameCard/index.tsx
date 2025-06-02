@@ -29,6 +29,15 @@ const tierBackgroundImageConfig: Record<TierType, string> = {
   normal: "bg-[url('/images/img_ingame/img_card_label/img_normal_card.png')]",
 };
 
+const tierShadowImageConfig: Record<TierType, string> = {
+  decent: "bg-[url('/images/img_ingame/img_bg_normal_shadow.svg')]",
+  amazing: "bg-[url('/images/img_ingame/img_bg_normal_shadow.svg')]",
+  elite: "bg-[url('/images/img_ingame/img_bg_elite_shadow.svg')]",
+  fantasy: "bg-[url('/images/img_ingame/img_bg_fantasy_shadow.svg')]",
+  goat: "bg-[url('/images/img_ingame/img_bg_fantasy_shadow.svg')]",
+  normal: "bg-[url('/images/img_ingame/img_bg_normal_shadow.svg')]",
+};
+
 const tierColorConfig: Record<TierType, string> = {
   normal: "text-white/45",
   decent: "text-white/65",
@@ -67,6 +76,7 @@ const IngameCard: React.FC<IngameCardProps> = ({
   isDisabledBurn = false,
 }) => {
   const backgroundImageClass = tierBackgroundImageConfig[tier] || tierBackgroundImageConfig.normal;
+  const shadowImageClass = tierShadowImageConfig[tier] || tierShadowImageConfig.normal;
   const tierColor = tierColorConfig[tier] || "text-white";
 
   const positionTextColorClass =
@@ -171,8 +181,8 @@ const IngameCard: React.FC<IngameCardProps> = ({
       </div>
 
       {/* Actions */}
-      <div className="absolute inset-0 hidden flex-col items-center justify-end p-2 group-hover:flex">
-        <div className="flex w-full flex-col gap-1">
+      <div className={`absolute inset-0 hidden justify-end ${shadowImageClass} group-hover:flex`}>
+        <div className="flex flex-col justify-end gap-1 p-2">
           <ButtonCard disabled={isDisabledBurn}>Burn</ButtonCard>
           <Button
             variant="Primary"
