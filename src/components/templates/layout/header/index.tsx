@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Avatar, { AvatarSize } from "@/components/atoms/avatar";
-import Button from "@/components/atoms/Button";
+import Button from "@/components/atoms/button";
 import Typography, { TypographyVariant } from "@/components/atoms/typography";
 
 export default function Header() {
