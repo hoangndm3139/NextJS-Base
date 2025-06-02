@@ -1,9 +1,10 @@
+import clsx from "clsx";
 import { ReactNode } from "react";
 import { ButtonHTMLAttributes } from "react";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  variant: "Primary" | "Secondary1" | "Secondary2" | "Secondary3" | "Negative1" | "Negative2" | "Negative3";
+  variant: "Primary" | "Secondary1" | "Secondary2" | "Secondary3" | "Negative1" | "Negative2" | "Negative3" | "Outline";
   size: "Large" | "Medium" | "Small";
 }
 
@@ -25,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     Negative1: `bg-fblack-bg3 text-bw-gray-3 ${hoverClass}`,
     Negative2: `bg-fgray-normal text-bw-gray-3 ${hoverClass}`,
     Negative3: `bg-fblack-bg2 text-bw-gray-25 ${hoverClass}`,
+    Outline: ` bg-transparent border-1 border-solid border-fprimary-yellow text-fprimary-yellow ${hoverClass}`,
   };
 
   const SizeVariants: { [key: string]: string } = {
@@ -36,7 +38,12 @@ const Button: React.FC<ButtonProps> = ({
     <button
       {...props}
       disabled={disabled}
-      className={`disabled:bg-fblack-bg3 disabled:text-fgray-gray2 flex flex-shrink-0 cursor-pointer items-center justify-center rounded-md font-semibold disabled:cursor-default ${ButtonVariants[variant]} ${SizeVariants[size]} ${className}`}
+      className={clsx(
+        "disabled:bg-fblack-bg3 disabled:text-fgray-gray2 flex flex-shrink-0 cursor-pointer items-center justify-center rounded-md font-semibold disabled:cursor-default",
+        ButtonVariants[variant],
+        SizeVariants[size],
+        className,
+      )}
     >
       {children}
     </button>
