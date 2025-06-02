@@ -1,23 +1,24 @@
 import { Checkbox as CheckboxHeadless } from "@headlessui/react";
 import clsx from "clsx";
-import React from "react";
+import React, { InputHTMLAttributes } from "react";
 
-interface CheckboxProps {
+interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   checked: boolean;
   isError?: boolean;
-  onChange?: () => void;
+  onChangeCheckbox?: (value: boolean) => void;
   className?: string;
 }
 
-const Checkbox = ({ checked, onChange, isError, className }: CheckboxProps) => {
+const Checkbox = ({ checked, onChangeCheckbox, isError, className, ...props }: CheckboxProps) => {
   const [isChecked, setIsChecked] = React.useState(checked);
   return (
     <CheckboxHeadless
+      {...props}
       checked={isChecked}
-      onChange={() => {
+      onChange={value => {
         if (isError) return;
         setIsChecked(!isChecked);
-        onChange?.();
+        onChangeCheckbox?.(value);
       }}
       className={clsx(
         "group border-fgray-normal data-checked:bg-fprimary-yellow data-checked:border-fprimary-yellow block size-4 cursor-pointer rounded-xs border",

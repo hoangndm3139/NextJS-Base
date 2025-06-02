@@ -1,23 +1,24 @@
 import { Switch } from "@headlessui/react";
 import clsx from "clsx";
-import React, { useState } from "react";
+import React, { ComponentProps, useState } from "react";
 
-type ToggleProps = {
+interface ToggleProps extends ComponentProps<typeof Switch> {
   enabled: boolean;
-  onToggleChange?: () => void;
+  onToggleChange?: (value: boolean) => void;
   disabled?: boolean;
   className?: string;
-};
+}
 
-const Toggle = ({ enabled, onToggleChange, disabled, className }: ToggleProps) => {
+const Toggle = ({ enabled, onToggleChange, disabled, className, ...props }: ToggleProps) => {
   const [checked, setChecked] = useState(enabled);
   return (
     <Switch
+      {...props}
       checked={checked}
       disabled={disabled}
-      onChange={() => {
+      onChange={value => {
+        onToggleChange?.(!value);
         setChecked(!checked);
-        onToggleChange?.();
       }}
       className={clsx(
         "group bg-fprimary-yellow-2 data-checked:bg-fgray-normal inline-flex w-8 items-center rounded-lg data-disabled:cursor-not-allowed data-disabled:opacity-50",
