@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import Button from "@/components/atoms/Button";
+import Button from "@/components/atoms/button";
 import CircularProgress from "@/components/atoms/circularProgress";
 import { GradeType, PositionType } from "@/types/card";
 
@@ -26,7 +26,7 @@ type PlateCardProps = {
 };
 
 const commonCardClasses =
-  "w-[120px] h-[188px] rou nded-lg flex flex-col justify-between items-center text-center bg-cover bg-center bg-no-repeat";
+  "w-[120px] h-[188px] rou nded-lg flex flex-col justify-between items-center text-center bg-cover bg-center bg-no-repeat group relative bg-[url('/images/img_ingame/img_plate_card.png')]";
 
 const gradeIcons: Record<GradeType, string> = {
   AM: "/icons/icon_card_grade/ic_grade_card_AM.svg",
@@ -58,7 +58,7 @@ const PlateCard: React.FC<PlateCardProps> = ({
   };
 
   return (
-    <div className={`${commonCardClasses} group relative bg-[url('/images/img_ingame/img_plate_card.png')]`}>
+    <div className={commonCardClasses}>
       {/* Player Visual */}
       <div className="relative flex w-full flex-1 justify-center">
         <Image

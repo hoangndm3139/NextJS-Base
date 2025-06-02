@@ -9,7 +9,7 @@ const meta: Meta<typeof CircularProgress> = {
     totalValue: { control: { type: "number", defaultValue: 3 } },
     size: { control: "number" },
     strokeWidth: { control: "number" },
-    showValue: { control: "boolean" },
+    isShowValue: { control: "boolean" },
     color: { control: "object" },
     backgroundColor: { control: "color" },
     className: { control: "text" },

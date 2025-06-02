@@ -1,7 +1,8 @@
 import Image from "next/image";
+import clsx from "clsx";
 import React from "react";
-import Button from "@/components/atoms/Button";
-import ButtonCard from "@/components/atoms/ButtonCard";
+import Button from "@/components/atoms/button";
+import ButtonCard from "@/components/atoms/buttonCard";
 import { MomType, PositionType, TierType } from "@/types/card";
 
 type IngameCardProps = {
@@ -87,7 +88,7 @@ const IngameCard: React.FC<IngameCardProps> = ({
   };
 
   return (
-    <div className={`${commonCardClasses} ${backgroundImageClass} group relative`}>
+    <div className={clsx(commonCardClasses, backgroundImageClass, "group relative")}>
       {/* Player Visual */}
       <div className="relative flex w-full flex-1 justify-center">
         {mom && (
@@ -169,19 +170,22 @@ const IngameCard: React.FC<IngameCardProps> = ({
             </div>
             <div className="flex w-[26px] flex-col items-center gap-0.5">
               <p className={labelClassName}>pos</p>
-              <p className={`text-[10px] leading-4 font-bold uppercase ${positionTextColorClass}`}>{position}</p>
+              <p className={clsx("text-[10px] leading-4 font-bold uppercase", positionTextColorClass)}>{position}</p>
             </div>
           </div>
         </div>
         <div
-          className={`justify-start text-[8px] leading-[9.60px] font-semibold tracking-[5.20px] uppercase ${tierColor}`}
+          className={clsx(
+            "justify-start text-[8px] leading-[9.60px] font-semibold tracking-[5.20px] uppercase",
+            tierColor,
+          )}
         >
           {tier}
         </div>
       </div>
 
       {/* Actions */}
-      <div className={`absolute inset-0 hidden justify-end ${shadowImageClass} group-hover:flex`}>
+      <div className={clsx("absolute inset-0 hidden justify-end group-hover:flex", shadowImageClass)}>
         <div className="flex flex-col justify-end gap-1 p-2">
           <ButtonCard disabled={isDisabledBurn}>Burn</ButtonCard>
           <Button

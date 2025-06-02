@@ -1,7 +1,8 @@
+import clsx from "clsx";
 import PositionStats from "@/components/molecules/card/backOfCard/positionStats";
 import { TierType } from "@/types/card";
 
-interface BackOfCardProps {
+type BackOfCardProps = {
   tier: TierType;
   skill: string;
   league: string;
@@ -15,7 +16,7 @@ interface BackOfCardProps {
     name: string;
     score: number;
   };
-}
+};
 
 const tierBackgroundImageConfig: Record<TierType, string> = {
   normal: "bg-[url('/images/img_ingame/img_back_of_card/img_back_of_normal.png')]",
@@ -32,8 +33,8 @@ const BackOfCard = ({ tier, skill, league, awayClub, homeClub, round, season }: 
   const backgroundImageClass = tierBackgroundImageConfig[tier] || tierBackgroundImageConfig.normal;
 
   return (
-    <div className={`${commonCardClasses} ${backgroundImageClass} bg-cover bg-center bg-no-repeat`}>
-      <div className="w-full border-b border-[#7F7F7F]/20 pt-4 pb-1.5">
+    <div className={clsx(commonCardClasses, backgroundImageClass)}>
+      <div className="border-fdivider-gray w-full border-b pt-4 pb-1.5">
         <div className="flex flex-col gap-[5px]">
           <div className="flex items-center justify-between">
             <div className="flex items-center justify-between gap-[3px]">
@@ -54,7 +55,7 @@ const BackOfCard = ({ tier, skill, league, awayClub, homeClub, round, season }: 
           </div>
         </div>
       </div>
-      <div className="w-full border-b border-[#7F7F7F]/20 pb-1.5">
+      <div className="border-fdivider-gray w-full border-b pb-1.5">
         <PositionStats />
       </div>
       <div className="flex w-full justify-between">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import clsx from "clsx";
 import React from "react";
 import { MomType, PositionType, TierType, CardMode } from "@/types/card";
 
@@ -63,7 +64,7 @@ const IngameCardWithoutTier: React.FC<IngameCardWithoutTierProps> = ({
     event.currentTarget.src = FALLBACK_PLAYER_IMAGE;
   };
   return (
-    <div className={`${commonCardClasses} ${backgroundImageClass}`}>
+    <div className={clsx(commonCardClasses, backgroundImageClass)}>
       {/* Player Visual */}
       <div className="relative flex w-full flex-1 justify-center">
         {mom && (
@@ -109,7 +110,7 @@ const IngameCardWithoutTier: React.FC<IngameCardWithoutTierProps> = ({
           )}
           <div className="flex flex-col items-center gap-0.5">
             <p className={labelClassName}>pos</p>
-            <p className={`text-[6px] leading-none font-bold text-white uppercase ${positionTextColorClass}`}>
+            <p className={clsx("text-[6px] leading-none font-bold text-white uppercase", positionTextColorClass)}>
               {position}
             </p>
           </div>

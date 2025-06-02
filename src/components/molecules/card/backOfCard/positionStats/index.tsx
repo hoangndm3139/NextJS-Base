@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { PositionType } from "@/types/card";
 
 const mockPositions: { index: number; position: PositionType; ovr: number }[] = [
@@ -6,11 +7,11 @@ const mockPositions: { index: number; position: PositionType; ovr: number }[] = 
   { index: 2, position: "CB", ovr: 80 },
 ];
 
-interface PositionTagProps {
+type PositionTagProps = {
   index: number;
   position: PositionType;
   ovr: number;
-}
+};
 
 const forwardPositions: PositionType[] = ["ST", "CF", "RF", "LF", "RW", "LW"];
 const midfielderPositions: PositionType[] = ["CAM", "CM", "CDM", "RM", "LM"];
@@ -47,8 +48,8 @@ const PositionTag = ({ index, position, ovr }: PositionTagProps) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className={`${tagColor} flex h-2.5 w-[21px] items-center justify-center rounded-t-[2px]`}>
-        <p className={`text-[7px] leading-2 font-semibold ${determinedPositionColor}`}>{position}</p>
+      <div className={clsx(tagColor, "flex h-2.5 w-[21px] items-center justify-center rounded-t-[2px]")}>
+        <p className={clsx("text-[7px] leading-2 font-semibold", determinedPositionColor)}>{position}</p>
       </div>
       <div className="h-[14px] w-[21px] bg-[url(/images/img_ingame/img_back_of_card/img_bg_tag.svg)] bg-cover bg-center bg-no-repeat">
         <div className="flex h-[14px] w-[21px] justify-center pt-0.5">

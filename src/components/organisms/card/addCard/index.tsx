@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Typography, { TypographyVariant } from "@/components/atoms/typography";
 
-const AddCard = ({ position, onClick }: { position: string; onClick: () => void }) => {
+type AddCardProps = {
+  position: string;
+  onClick: () => void;
+};
+
+const AddCard = ({ position, onClick }: AddCardProps) => {
   return (
     <div
       className="bg-fblack-opacity60 flex h-30 w-[90px] cursor-pointer flex-col items-center justify-center gap-1"

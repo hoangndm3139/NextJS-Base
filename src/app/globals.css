@@ -85,6 +85,8 @@
   --color-fprogess-1: #ffac00;
   --color-fprogess-2: #ff525e;
 
+  --color-fdivider-gray: #7f7f7f33;
+
   /* Gradients */
   --gradient-1GO: linear-gradient(90deg, #db73ff 0%, #7b53ed 100%);
   --gradient-2FA: linear-gradient(90deg, #33afe4 0%, #13cccc 100%);
