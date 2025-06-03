@@ -70,7 +70,7 @@ const PlateCard: React.FC<PlateCardProps> = ({
           onError={handleImageError}
         />
         {grade && (
-          <div className="bg-fblack-bg5 absolute top-[9px] right-2 flex h-4 items-center justify-center gap-1 rounded-[10px] px-1 backdrop-blur-[2px]">
+          <div className="bg-fblack-th absolute top-[9px] right-2 flex h-4 items-center justify-center gap-1 rounded-[10px] px-1 backdrop-blur-[2px]">
             <Image
               src={gradeIcons[grade.type]}
               alt="grade_icon"
