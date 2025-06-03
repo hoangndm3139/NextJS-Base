@@ -7,5 +7,5 @@ module.exports = {
     "./src/sections/**/*.{js,jsx,ts,tsx}",
     "./src/components/**/*.{js,jsx,ts,tsx}",
   ],
-  plugins: [require("tailwind-scrollbar")],
+  plugins: [],
 };
