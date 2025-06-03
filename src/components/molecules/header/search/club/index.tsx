@@ -10,7 +10,7 @@ interface ClubResultProps {
 
 export default function ClubResult({ clubs }: ClubResultProps) {
   return (
-    <div className="mt-4 w-full rounded px-4">
+    <div className="mt-4 w-full rounded px-1">
       <Typography
         variant={TypographyVariant.BODY_2}
         className="text-bw-gray-3"
@@ -22,7 +22,7 @@ export default function ClubResult({ clubs }: ClubResultProps) {
           <Typography
             key={index}
             variant={TypographyVariant.BODY_1}
-            className="text-bw-gray-3 w-full overflow-hidden py-2 text-ellipsis whitespace-nowrap hover:text-white"
+            className="text-bw-gray-3 w-full cursor-pointer overflow-hidden py-2 text-ellipsis whitespace-nowrap hover:text-white"
           >
             {club.name}
             <span className="ml-1">{`(${club.league})`}</span>

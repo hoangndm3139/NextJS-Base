@@ -12,7 +12,7 @@ interface PlayerResultProps {
 }
 export default function PlayerResult({ players }: PlayerResultProps) {
   return (
-    <div className="mt-4 w-full rounded px-4">
+    <div className="mt-4 w-full rounded px-1">
       <Typography
         variant={TypographyVariant.BODY_2}
         className="text-bw-gray-3"

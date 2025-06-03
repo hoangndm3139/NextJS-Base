@@ -10,7 +10,7 @@ const ButtonCard = ({ children = "", className, ...props }: ButtonProps) => {
     <button
       {...props}
       className={clsx(
-        "border-fprimary-yellow text-fprimary-yellow disabled:bg-fblack-bg3 disabled:text-fgray-gray2 flex h-[26px] w-[104px] cursor-pointer items-center justify-center rounded-sm border text-[10px] font-semibold hover:bg-white/10 disabled:cursor-default disabled:border-0",
+        "border-fprimary-yellow text-fprimary-yellow disabled:bg-fblack-bg3 disabled:text-fgray-gray2 flex h-6.5 w-26 cursor-pointer items-center justify-center rounded-sm border text-[10px] font-semibold hover:bg-white/10 disabled:cursor-default disabled:border-0",
         className,
       )}
     >

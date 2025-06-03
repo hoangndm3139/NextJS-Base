@@ -11,11 +11,12 @@ interface AvatarProps extends Omit<ImageProps, "width" | "height"> {
   size: AvatarSize;
 }
 
-export default function Avatar({ size, ...props }: AvatarProps) {
+export default function Avatar({ size, src = "/icons/icon_avatar/ic_avatar_default.png", ...props }: AvatarProps) {
   return (
     <Image
       height={size}
       width={size}
+      src={src}
       {...props}
     />
   );

@@ -4,6 +4,7 @@ import { checkPathnameHasLocale } from "../utils/helpers";
 
 export async function handleLocale(request: NextRequest): Promise<NextResponse | undefined> {
   const { pathname } = request.nextUrl;
+  console.log("Locale Handler:==================================", pathname);
 
   if (!checkPathnameHasLocale(pathname)) {
     const locale = i18n.defaultLocale;

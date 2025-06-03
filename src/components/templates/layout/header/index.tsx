@@ -5,7 +5,7 @@ import Typography, { TypographyVariant } from "@/components/atoms/typography";
 
 export default function Header() {
   return (
-    <header className="flex h-[68px] w-full items-center justify-between">
+    <header className="flex h-17 w-full items-center justify-between">
       <Image
         src="/icons/icon_logo/logo_header.svg"
         width={143}
@@ -28,7 +28,7 @@ export default function Header() {
             >
               500,154
             </Typography>
-            <div className="bg-fprimary-yellow ml-1.5 flex h-4 w-[51px] items-center justify-center rounded-full">
+            <div className="bg-fprimary-yellow ml-1.5 flex h-4 w-12.75 items-center justify-center rounded-full">
               <Typography
                 variant={TypographyVariant.DETAIL_B}
                 className="text-fblack-th"

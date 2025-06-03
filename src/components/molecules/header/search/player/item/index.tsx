@@ -13,7 +13,7 @@ export default function PlayerItem({
   avatarSrc = "/icons/icon_player/ic_player_avatar.svg",
 }: PlayerResultProps) {
   return (
-    <div className="text-bw-gray-3 mt-2 flex h-[59px] w-full cursor-pointer py-3 hover:text-white">
+    <div className="text-bw-gray-3 mt-2 flex h-14.75 w-full cursor-pointer py-3 hover:text-white">
       <Avatar
         src={avatarSrc}
         alt={name}

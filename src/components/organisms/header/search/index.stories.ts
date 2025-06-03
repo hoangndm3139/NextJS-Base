@@ -10,6 +10,13 @@ const meta: Meta<typeof HeaderSearch> = {
       default: "dark",
     },
   },
+  argTypes: {
+    result: {
+      control: {
+        type: "object",
+      },
+    },
+  },
   tags: ["autodocs"],
 };
 
@@ -40,25 +47,13 @@ const mockResults = {
 };
 
 export const Default: Story = {
-  parameters: {
-    mockData: mockResults.empty,
-  },
+  args: { result: mockResults.empty },
 };
 
 export const WithResults: Story = {
-  parameters: {
-    mockData: mockResults.withAllData,
-  },
-};
-
-export const Loading: Story = {
-  parameters: {
-    mockData: undefined,
-  },
+  args: { result: mockResults.withAllData },
 };
 
 export const NoResults: Story = {
-  parameters: {
-    mockData: mockResults.empty,
-  },
+  args: mockResults.withAllData,
 };

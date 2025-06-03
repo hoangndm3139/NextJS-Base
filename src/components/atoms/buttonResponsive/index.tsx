@@ -12,7 +12,7 @@ const ButtonResponsive = ({ children, open, className = "", ...props }: ButtonRe
     <button
       {...props}
       className={clsx(
-        "bg-fgray-normal flex h-10 min-w-[110px] shrink-0 -rotate-90 cursor-pointer items-center justify-center gap-2 rounded-t-lg px-6 text-xs font-semibold shadow-[4px_0px_24px_0px_rgba(0,0,0,0.80)] hover:bg-[linear-gradient(0deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.1)_100%)] hover:bg-blend-overlay",
+        "bg-fgray-normal flex h-10 min-w-27.5 shrink-0 -rotate-90 cursor-pointer items-center justify-center gap-2 rounded-t-lg px-6 text-xs font-semibold shadow-[4px_0px_24px_0px_rgba(0,0,0,0.80)] hover:bg-[linear-gradient(0deg,rgba(255,255,255,0.1)_0%,rgba(255,255,255,0.1)_100%)] hover:bg-blend-overlay",
         className,
       )}
     >
